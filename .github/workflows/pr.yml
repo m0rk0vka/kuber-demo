@@ -7,7 +7,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Start minikube
-      uses: medyagh/setup-minikube@master
+      - uses: medyagh/setup-minikube@latest
+        with:
+          cache: false
     - name: Try the cluster !
       run: kubectl get pods -A
     - name: Build image
