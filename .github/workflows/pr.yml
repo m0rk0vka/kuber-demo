@@ -15,7 +15,7 @@ jobs:
     - name: Build image
       run: |
         export SHELL=/bin/bash
-        eval $(minikube docker-env)
+        eval $(minikube -p minikube docker-env)
         docker build -f ./Dockerfile -t myapp:latest .
         echo -n "verifying images:"
         docker images        
@@ -23,7 +23,7 @@ jobs:
     - name: Deploy to minikube
       run: |
         kubectl apply -f ./manifests/
-        kubectl wait --for=condition=ready pods --all
+        kubectl wait --for=condition=ready pods --all --timeout=300s
     - name: Check the cluster
       run: |
         kubectl get po
