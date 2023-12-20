@@ -43,4 +43,5 @@ jobs:
         kubectl describe pods
     - name: Run sercvice
       run: 
+        minikube service list
         minikube service myapp-service
