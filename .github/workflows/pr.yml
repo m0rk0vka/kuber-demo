@@ -20,6 +20,7 @@ jobs:
         docker build -f ./Dockerfile -t myapp:latest .
         echo -n "verifying images:"
         docker images        
+      minikube image load myapp:latest
     - name: Deploy to minikube
       run: |
         kubectl delete pods --all
