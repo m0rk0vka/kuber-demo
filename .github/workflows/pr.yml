@@ -32,8 +32,8 @@ jobs:
         kubectl get po
         kubectl get deployments
         kubectl get services
-        echo "--- get pod info ---"
-        kubectl describe myapp-deployment
+        echo "--- get events info ---"
+        kubectl get events
     - name: Run sercvice
       run: 
         minikube service myapp-service
