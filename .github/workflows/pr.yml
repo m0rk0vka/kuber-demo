@@ -27,6 +27,7 @@ jobs:
         kubectl delete deployments --all
         kubectl delete services --all
         kubectl apply -f ./manifests/
+        kubectl wait --all --timeout=60s
     - name: Check the cluster
       run: |
         kubectl get po
