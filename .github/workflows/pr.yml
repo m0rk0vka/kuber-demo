@@ -42,7 +42,7 @@ jobs:
         echo "--- describing pods ----"
         kubectl describe pods
     - name: Run sercvice
-      run: 
+      run: |
         minikube service list
         minikube service myapp-service --url
         echo -n "------------------opening the service------------------"
