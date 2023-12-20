@@ -21,6 +21,11 @@ jobs:
       run: |
         kubectl apply -f ./manifests/deployment.yaml
         kubectl apply -f ./manifests/service.yaml
+    - name: Check the cluster
+      run: |
+        kubectl get po
+        kubectl get deployments
+        kubectl get services
     - name: Run sercvice
       run: |
         minikube service list
