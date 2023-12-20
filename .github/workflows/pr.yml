@@ -11,7 +11,6 @@ jobs:
       with:
         cache: false
         start-args: ''
-        container-runtime: containerd
     - name: Try the cluster !
       run: kubectl get pods -A
     - name: Build image
