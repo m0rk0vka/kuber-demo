@@ -10,7 +10,6 @@ jobs:
       uses: medyagh/setup-minikube@latest
       with:
         cache: false
-        start-args: '--wait=all --wait-timeout=6m0s'
     - name: Try the cluster !
       run: kubectl get pods -A
     - name: Build image
@@ -23,11 +22,8 @@ jobs:
         minikube image load myapp:latest
     - name: Deploy to minikube
       run: |
-        kubectl delete pods --all
-        kubectl delete deployments --all
-        kubectl delete services --all
         kubectl apply -f ./manifests/
-        kubectl wait --all --timeout=60s
+        kubectl wait --timeout=300s
     - name: Check the cluster
       run: |
         kubectl get po
