@@ -12,6 +12,12 @@ jobs:
         cache: false
     - name: Try the cluster !
       run: kubectl get pods -A
+    - name: Build image in another way
+      run: |
+        docker build -f ./Dockerfile -t myapp:latest .
+        echo -n "verifying images:"
+        docker images        
+        minikube image load myapp:latest
     - name: Build image
       run: |
         export SHELL=/bin/bash
