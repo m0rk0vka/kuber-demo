@@ -41,3 +41,6 @@ jobs:
         minikube service myapp-service --url
         echo -n "------------------opening the service------------------"
         curl $(minikube service myapp-service --url)/version
+    - name: get minikube logs
+      run:
+        minikube logs
