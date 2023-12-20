@@ -21,6 +21,8 @@ jobs:
       run: |
         eval $(minikube -p minikube docker-env)
         docker run -d --name=myapp -p 8080:8080 myapp:latest
+        echo "--- checking containers ---"
+        docker ps
     - name: Deploy to minikube
       run: |
         kubectl apply -f ./manifests/deployment.yaml
@@ -30,8 +32,8 @@ jobs:
         kubectl get po
         kubectl get deployments
         kubectl get services
+        echo "--- get pod info ---"
+        kubectl describe myapp-deployment
     - name: Run sercvice
-      run: |
-        minikube service list
-        echo "------------------opening the service------------------"
-        curl $(minikube service myapp-service --url)  
+      run: 
+        minikube service myapp-service
