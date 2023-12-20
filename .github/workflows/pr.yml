@@ -10,7 +10,7 @@ jobs:
       uses: medyagh/setup-minikube@latest
       with:
         cache: false
-        start-args: ''
+        start-args: '--wait=all --wait-timeout=6m0s'
     - name: Try the cluster !
       run: kubectl get pods -A
     - name: Build image
