@@ -39,6 +39,8 @@ jobs:
         kubectl get services
         echo "--- get events info ---"
         kubectl get events
+        echo "--- describing pods ----"
+        kubectl describe pods
     - name: Run sercvice
       run: 
         minikube service myapp-service
