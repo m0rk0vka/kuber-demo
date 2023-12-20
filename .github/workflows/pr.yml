@@ -17,6 +17,10 @@ jobs:
         docker build -f ./Dockerfile -t myapp:latest .
         echo -n "verifying images:"
         docker images        
+    - name: Run a container
+      run: |
+        eval $(minikube -p minikube docker-env)
+        docker run -d --name=myapp -p 8080:8080 myapp:latest
     - name: Deploy to minikube
       run: |
         kubectl apply -f ./manifests/deployment.yaml
