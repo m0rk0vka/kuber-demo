@@ -38,9 +38,6 @@ jobs:
         kubectl get events
         echo "--- describing pods ----"
         kubectl describe pods
-    - name: Event log
-      run:
-        kubectl get events --all-namespaces  --sort-by='.metadata.creationTimestamp' --kubeconfig=/etc/kubernetes/admin.conf
     - name: Run sercvice
       run: |
         minikube service list
