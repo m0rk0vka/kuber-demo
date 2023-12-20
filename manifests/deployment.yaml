@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
       - name: myapp
+        imagePullPolicy: Never
         image: myapp:latest
         ports:
         - containerPort: 8080
-        imagePullPolicy: Never
 
